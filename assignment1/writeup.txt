@@ -1,0 +1,14 @@
+1. Read prediction:
+   Creating a variable C = BookCounts[book] * mean(alpha*sim1 + (1-alpha)*sim2)
+   Sim1 is the mean of Jaccard similarities calculated based on different items‘ users.
+   Because in some cases, the users are unseen. So we interchange user and item to calculate, which is sim2.
+   For each user -> list(user, book, C)
+   Sort the list based on C's value, and set a threshold: 
+   If the (user,book) in [0,threshold] of the ranks: predict y to be 0.
+   Else, predict y to be 1.
+
+
+2. Rate prediction:
+   Use the latent factor models: set lambda1 for user bias, lambda2 for items bias.
+   Just fine-tune this two factors based on the mse.
+          
